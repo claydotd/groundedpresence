@@ -1,78 +1,144 @@
-# React + TypeScript + Vite
+# Grounded Presence
+Currently live at: [https://analoguegonedigital.co.uk/groundedpresence/](https://analoguegonedigital.co.uk/groundedpresence/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Editing pages
+To edit the text on each page, you will find the files in the [/content folder](/content/)
+Edit the file, then press the Commit Changes button. It will take a few minutes for the changes to go live.
 
-Currently, two official plugins are available:
+All text is in Markdown format. I've put the cheat sheet below, but you can also find it on [MarkdownGuide.org](https://www.markdownguide.org/cheat-sheet/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+You can upload any images you want to put on the pages to the [public/images folder](/public/images/) then add them to the pages using the path `/images/filename`. So for example, if I want to use your footprints image (since it's already uploaded there), I would put `/images/footprints.avif` as the image source.
 
-## React Compiler
+## Adding photos and collections
+You can add new collection by adding a new folder to `/public/galleries/` and putting images in it. The Work page will automatically 
+The order that they appear in is set by the numbers, so please keep the same convention of `number`**-**`name` for the collections.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+The photo order in each collection is also set by alphanumeric order, you can see (at the time of writing this) that I've ordered the Street and Stage collections by naming the files.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Adding new pages
+You can add new pages to the website by creating a new `.md` file in the [/content folder](/content/)
+The file name will be the page's title on the website (without the .md at the end of course)
 
-## Expanding the ESLint configuration
+## If you need any help
+I'm always more than happy to help make any changes or quick fixes- just email me and I'll sort it :)
+[hello@analoguegonedigital.co.uk](mailto:hello@analoguegonedigital.co.uk)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Markdown Cheat Sheet
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This Markdown Cheat Sheet is from [The Markdown Guide](https://www.markdownguide.org)!
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [basic syntax](https://www.markdownguide.org/basic-syntax/) and [extended syntax](https://www.markdownguide.org/extended-syntax/).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Basic Syntax
+
+These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
+
+### Heading
+
+# H1
+## H2
+### H3
+
+### Bold
+
+**bold text**
+
+### Italic
+
+*italicized text*
+
+### Blockquote
+
+> blockquote
+
+### Ordered List
+
+1. First item
+2. Second item
+3. Third item
+
+### Unordered List
+
+- First item
+- Second item
+- Third item
+
+### Code
+
+`code`
+
+### Horizontal Rule
+
+---
+
+### Link
+
+[Markdown Guide](https://www.markdownguide.org)
+
+### Image
+
+![alt text](https://www.markdownguide.org/assets/images/tux.png)
+
+## Extended Syntax
+
+These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
+
+### Table
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+### Fenced Code Block
 
 ```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
 ```
+
+### Footnote
+
+Here's a sentence with a footnote. [^1]
+
+[^1]: This is the footnote.
+
+### Heading ID
+
+### My Great Heading {#custom-id}
+
+### Definition List
+
+term
+: definition
+
+### Strikethrough
+
+~~The world is flat.~~
+
+### Task List
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+
+### Emoji
+
+That is so funny! :joy:
+
+(See also [Copying and Pasting Emoji](https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji))
+
+### Highlight
+
+I need to highlight these ==very important words==.
+
+### Subscript
+
+H~2~O
+
+### Superscript
+
+X^2^
