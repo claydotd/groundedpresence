@@ -1,13 +1,51 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import { galleriesPlugin } from './vite-plugin-galleries.ts'
+
+function normalizeBase(value: string): string {
+  if (!value || value === '/') return '/'
+  return value.endsWith('/') ? value : `${value}/`
+}
+
+function pagesBase(): string {
+  if (process.env.BASE_PATH) return normalizeBase(process.env.BASE_PATH)
+
+  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1]
+  if (process.env.GITHUB_ACTIONS && repo && !repo.endsWith('.github.io')) {
+    return `/${repo}/`
+  }
+
+  return '/'
+}
+
+/** GitHub Pages serves 404.html for unknown paths, which lets the SPA handle routes. */
+function githubPagesSpaFallback(): Plugin {
+  return {
+    name: 'github-pages-spa-fallback',
+    closeBundle: {
+      sequential: true,
+      order: 'post',
+      handler() {
+        const dist = path.resolve(process.cwd(), 'dist')
+        const index = path.join(dist, 'index.html')
+        if (fs.existsSync(index)) {
+          fs.copyFileSync(index, path.join(dist, '404.html'))
+        }
+      },
+    },
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: pagesBase(),
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] }),
     galleriesPlugin(),
+    githubPagesSpaFallback(),
   ],
 })

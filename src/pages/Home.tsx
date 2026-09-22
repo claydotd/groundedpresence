@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
 import FadeImage from '../components/FadeImage'
-import heroImage from '/images/hero-image.avif'
 import verticalLine from '/src/assets/vert-divider.svg'
+
+const heroImage = `${import.meta.env.BASE_URL}images/hero-image.avif`
 
 export default function Home() {
   return (
@@ -11,7 +13,7 @@ export default function Home() {
             <div className="hero-content">
                 <h1 className="hero-h1">Grounded<br />Presence</h1>
                 <img src={verticalLine} loading="lazy" alt="" />
-                <a href="/work" className="primary-button">View My Work</a>
+                <Link to="/work" className="primary-button">View My Work</Link>
             </div>
             <div className="hero-image">
                 <FadeImage

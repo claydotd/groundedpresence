@@ -1,6 +1,7 @@
 import FadeImage from './FadeImage'
-import footprint from '/images/footprints.avif'
 import insta from '/src/assets/insta.svg'
+
+const footprint = `${import.meta.env.BASE_URL}images/footprints.avif`
 
 export default function Contact() {
   return (

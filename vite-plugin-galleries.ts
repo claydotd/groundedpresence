@@ -52,7 +52,13 @@ function isPreviewCandidate(filename: string): boolean {
   return /^(thumb|preview|cover|thumbnail)$/.test(base)
 }
 
-function scanGalleries(root: string): Gallery[] {
+function withBase(base: string, assetPath: string): string {
+  const prefix = base.endsWith('/') ? base.slice(0, -1) : base
+  const suffix = assetPath.startsWith('/') ? assetPath : `/${assetPath}`
+  return `${prefix}${suffix}`
+}
+
+function scanGalleries(root: string, base: string): Gallery[] {
   const galleriesDir = path.join(root, 'public', 'galleries')
   if (!fs.existsSync(galleriesDir)) return []
 
@@ -73,7 +79,9 @@ function scanGalleries(root: string): Gallery[] {
     if (files.length === 0) continue
 
     const preview = files.find(isPreviewCandidate) ?? files[0]
-    const images = files.map((file) => `/galleries/${entry.name}/${file}`)
+    const images = files.map((file) =>
+      withBase(base, `/galleries/${entry.name}/${file}`),
+    )
     const { order } = parseOrderPrefix(entry.name)
     const name = formatGalleryName(entry.name)
 
@@ -81,7 +89,7 @@ function scanGalleries(root: string): Gallery[] {
       slug: entry.name,
       name,
       order,
-      thumb: `/galleries/${entry.name}/${preview}`,
+      thumb: withBase(base, `/galleries/${entry.name}/${preview}`),
       images,
     })
   }
@@ -99,18 +107,20 @@ function isGalleriesPath(filePath: string): boolean {
 
 export function galleriesPlugin(): Plugin {
   let root = process.cwd()
+  let base = '/'
 
   return {
     name: 'galleries',
     configResolved(config) {
       root = config.root
+      base = config.base
     },
     resolveId(id) {
       if (id === VIRTUAL_MODULE_ID) return RESOLVED_VIRTUAL_MODULE_ID
     },
     load(id) {
       if (id !== RESOLVED_VIRTUAL_MODULE_ID) return
-      const galleries = scanGalleries(root)
+      const galleries = scanGalleries(root, base)
       return `export const galleries = ${JSON.stringify(galleries, null, 2)}\n`
     },
     configureServer(server) {

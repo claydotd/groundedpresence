@@ -1,12 +1,15 @@
 import { useEffect, useId, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import verticalLine from '/src/assets/vert-divider.svg'
+import { contentPages } from '../contentPages'
 
 const NAV_LINKS = [
   { to: '/work', label: 'Work' },
-  { to: '/my-story', label: 'My Story' },
-  { to: '/cv', label: 'CV' },
-] as const
+  ...contentPages.map((page) => ({
+    to: `/${page.slug}`,
+    label: page.title,
+  })),
+]
 
 export default function Header() {
   const [open, setOpen] = useState(false)
