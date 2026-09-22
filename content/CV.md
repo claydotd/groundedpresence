@@ -1,0 +1,52 @@
+### Claire McAlpine
+
+Mindful Photography Practitioner | Diagnostic Radiographer
+
+07732628870 | clasbobear@icloud.com | 107 Mayfield Road, Edinburgh, EH9 3AJ
+
+#### PROFILE
+I have been creating images for over half of my life and view it as my true calling. My career exists at the intersection of clinical observation and creative expression. As a Diagnostic Radiographer, I use imaging to look beneath the surface; as a photographer, I use the lens as a restorative tool for mindfulness and presence. I am dedicated to sharing the therapeutic benefits of photography to help others process experiences, find emotional clarity, and embark on the journey of unmasking.
+
+#### SKILLS
+- Therapeutic: Mindful photography facilitation, workshop design, and image-making therapy applications.
+- Clinical: Diagnostic Radiography, Sonography, and medical image interpretation (NHS Lothian).
+- Professional: Creative thinking, adaptability, and maintaining calm in high-pressure environments.
+- Artistic: Eye for detail, visual storytelling, and experimental image-making (digital and darkroom).
+
+
+#### EXHIBITIONS & PROJECTS
+
+- Bridgend Farmhouse Mindful Photography Workshop | Edinburgh (2024): Curated and showcased photographs produced during community-based sessions, focusing on the connection between the process of photography and mental well-being.
+- Agitate Gallery: "Contact Print" Submission | Edinburgh (2024): Selected work for the "Contact Print" open call, exploring new perspectives and ways of seeing.
+
+
+#### EXPERIENCE
+
+**Mindful Photography Practitioner** | 2022 – Present
+- NHS Lothian ‘Work Well’ Collaboration: Designed and facilitated lunchtime mindful photography workshops for healthcare staff. These sessions used 'photo-walks' to help clinical colleagues decompress, using their smartphones to pivot from diagnostic observation to a mindful, grounded awareness of their surroundings.
+- Bridgend Community Farmhouse: Delivered a series of workshops exploring the intersection of nature, photography, and mental clarity, fostering a non-clinical environment for participants to explore their own perspectives.
+‍
+
+**Diagnostic Radiographer / Sonographer** | NHS Lothian | 2005 – Present
+- Obtaining and interpreting medical images in high-pressure clinical settings.
+- Communicating effectively with diverse medical teams and patients, ensuring empathy and clarity in patient care.
+
+**Self-Employed Photographer** | Northumberland | 2000 – 2005
+- Managed a diverse freelance practice specialising in documentary, music promotion, arts promotion, and weddings.
+
+**Photographic Printer** | Northumberland | 2000 – 2005
+- Professional printer for In Focus and AM Photographic, producing high-quality work for a range of photographers.
+- Executed bespoke hand-printing and experimental techniques for specialist commissions.
+
+#### VOLUNTARY EXPERIENCE
+- Gig Buddy | Thera Trust / Gig Buddies Scotland | 2022 – Present
+- Providing ongoing 1-on-1 support to individuals facing barriers, enabling them to access live music and cultural events.
+- Photographer & Venue Assistant | Hidden Door Festival, Edinburgh | 2022
+- Documented the site’s evolution through photography, capturing the intersection of derelict architecture and creative rebirth at the Old Royal High School.
+
+#### EDUCATION & PROFESSIONAL DEVELOPMENT
+- Therapeutic Photography Course, led by Dr Neil Gibson (Robert Gordon University) | 2025
+- Exposure Therapy Photography Masterclass, led by Gabriela Motola | 2024
+- PgD Medical Imaging (Ultrasound) | University of Cumbria | 2010 – 2012
+- BSc (Hons) Diagnostic Radiography | University of Cumbria | 2002 – 2005
+- HND Photography | Newcastle College | 1998 – 2000
