@@ -11,13 +11,9 @@ function normalizeBase(value: string): string {
 }
 
 function pagesBase(): string {
+  // Custom domain (groundedpresence.online) is served from site root.
+  // Override with BASE_PATH only if you ever need a subdirectory deploy.
   if (process.env.BASE_PATH) return normalizeBase(process.env.BASE_PATH)
-
-  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1]
-  if (process.env.GITHUB_ACTIONS && repo && !repo.endsWith('.github.io')) {
-    return `/${repo}/`
-  }
-
   return '/'
 }
 

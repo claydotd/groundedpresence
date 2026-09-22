@@ -1,5 +1,5 @@
 # Grounded Presence
-Currently live at: [https://analoguegonedigital.co.uk/groundedpresence/](https://analoguegonedigital.co.uk/groundedpresence/)
+Currently live at: [https://groundedpresence.online](https://groundedpresence.online)
 
 ## Editing pages
 To edit the text on each page, you will find the files in the [/content folder](/content/)

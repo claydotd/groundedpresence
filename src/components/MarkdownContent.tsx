@@ -9,7 +9,7 @@ const knownImageSizes: Record<string, { width: number; height: number }> = {
   '/images/mystoryimage.avif': { width: 1600, height: 1308 },
 }
 
-/** Resolve root-absolute public paths against Vite's base (e.g. /groundedpresence/). */
+/** Resolve root-absolute public paths against Vite's base. */
 function resolvePublicSrc(src: string): string {
   if (/^(https?:|data:|blob:)/i.test(src)) return src
   if (src.startsWith('/')) {
