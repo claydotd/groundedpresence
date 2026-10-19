@@ -1,4 +1,4 @@
-const RESERVED_SLUGS = new Set(['work'])
+const RESERVED_SLUGS = new Set(['work', 'drafts'])
 
 const markdownFiles = import.meta.glob('../content/*.md', {
   query: '?raw',
@@ -6,7 +6,15 @@ const markdownFiles = import.meta.glob('../content/*.md', {
   eager: true,
 }) as Record<string, string>
 
+const draftFiles = import.meta.glob('../content/drafts/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>
+
 export type ContentPage = {
+  /** File name without `.md`, used for draft preview URLs. */
+  filename: string
   slug: string
   title: string
   order: number
@@ -50,33 +58,62 @@ function fileStemFromPath(filePath: string): string {
   return filename.replace(/\.md$/i, '')
 }
 
-const seenSlugs = new Set<string>()
+function pagesFromFiles(
+  files: Record<string, string>,
+  options: { reserveSlugs: boolean },
+): ContentPage[] {
+  const seenSlugs = new Set<string>()
 
-export const contentPages: ContentPage[] = Object.entries(markdownFiles)
-  .map(([filePath, content]) => {
-    const stem = fileStemFromPath(filePath)
-    const { order } = parseOrderPrefix(stem)
+  return Object.entries(files)
+    .map(([filePath, content]) => {
+      const filename = fileStemFromPath(filePath)
+      const { order } = parseOrderPrefix(filename)
 
-    return {
-      slug: formatSlug(stem),
-      title: formatTitle(stem),
-      order,
-      content,
-    }
-  })
-  .filter((page) => {
-    if (!page.slug || RESERVED_SLUGS.has(page.slug) || seenSlugs.has(page.slug)) {
-      return false
-    }
+      return {
+        filename,
+        slug: formatSlug(filename),
+        title: formatTitle(filename),
+        order,
+        content,
+      }
+    })
+    .filter((page) => {
+      if (!page.slug) return false
+      if (!options.reserveSlugs) return true
+      if (RESERVED_SLUGS.has(page.slug) || seenSlugs.has(page.slug)) return false
 
-    seenSlugs.add(page.slug)
-    return true
-  })
-  .sort((a, b) => {
-    if (a.order !== b.order) return a.order - b.order
-    return a.title.localeCompare(b.title)
-  })
+      seenSlugs.add(page.slug)
+      return true
+    })
+    .sort((a, b) => {
+      if (a.order !== b.order) return a.order - b.order
+      return a.title.localeCompare(b.title)
+    })
+}
+
+export const contentPages: ContentPage[] = pagesFromFiles(markdownFiles, {
+  reserveSlugs: true,
+})
+
+export const draftPages: ContentPage[] = pagesFromFiles(draftFiles, {
+  reserveSlugs: false,
+})
 
 export function getContentPage(slug: string): ContentPage | undefined {
   return contentPages.find((page) => page.slug === slug)
+}
+
+function draftLookupKey(value: string): string {
+  try {
+    value = decodeURIComponent(value)
+  } catch {
+    // Keep the raw value when it is not valid percent-encoding.
+  }
+
+  return value.replace(/\.md$/i, '').trim().toLowerCase()
+}
+
+export function getDraftPage(filename: string): ContentPage | undefined {
+  const key = draftLookupKey(filename)
+  return draftPages.find((page) => page.filename.toLowerCase() === key)
 }

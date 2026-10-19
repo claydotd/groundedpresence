@@ -19,6 +19,13 @@ The photo order in each collection is also set by alphanumeric order, you can se
 You can add new pages to the website by creating a new `.md` file in the [/content folder](/content/)
 The file name will be the page's title on the website (without the .md at the end of course)
 
+## Drafting a page
+To preview a page before it goes in the menu, add the `.md` file to the [content/drafts folder](/content/drafts/) instead.
+
+It will not appear in the navigation. Open it on the live site at `/drafts/` followed by the file name, without `.md`. A file named `Workshops.md` is at [https://groundedpresence.online/drafts/Workshops](https://groundedpresence.online/drafts/Workshops). Every draft is also listed at [https://groundedpresence.online/drafts](https://groundedpresence.online/drafts).
+
+Anyone with the link can open a draft, but search engines are asked not to index those pages. When you are happy with it, move the file from `content/drafts/` into `content/` and it will be published in the menu.
+
 ## If you need any help
 I'm always more than happy to help make any changes or quick fixes- just email me and I'll sort it :)
 [hello@analoguegonedigital.co.uk](mailto:hello@analoguegonedigital.co.uk)

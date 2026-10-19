@@ -1,16 +1,9 @@
 import { Navigate, useParams } from 'react-router-dom'
 import verticalLine from '/src/assets/vert-divider.svg'
 import MarkdownContent from '../components/MarkdownContent'
-import { getContentPage } from '../contentPages'
+import { getContentPage, type ContentPage } from '../contentPages'
 
-export default function MarkdownPage() {
-  const { slug } = useParams<{ slug: string }>()
-  const page = slug ? getContentPage(slug) : undefined
-
-  if (!page) {
-    return <Navigate to="/" replace />
-  }
-
+export function ContentPageView({ page }: { page: ContentPage }) {
   return (
     <div className="content-page">
       <div className="page-title-container">
@@ -23,4 +16,15 @@ export default function MarkdownPage() {
       </div>
     </div>
   )
+}
+
+export default function MarkdownPage() {
+  const { slug } = useParams<{ slug: string }>()
+  const page = slug ? getContentPage(slug) : undefined
+
+  if (!page) {
+    return <Navigate to="/" replace />
+  }
+
+  return <ContentPageView page={page} />
 }

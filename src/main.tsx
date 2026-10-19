@@ -8,6 +8,7 @@ import Home from './pages/Home.tsx'
 import Work from './pages/Work.tsx'
 import Gallery from './pages/Gallery.tsx'
 import MarkdownPage from './pages/MarkdownPage.tsx'
+import DraftPage, { DraftIndex } from './pages/DraftPage.tsx'
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || undefined
 
@@ -19,6 +20,8 @@ createRoot(document.getElementById('root')!).render(
           <Route index element={<Home />} />
           <Route path="work" element={<Work />} />
           <Route path="work/:slug" element={<Gallery />} />
+          <Route path="drafts" element={<DraftIndex />} />
+          <Route path="drafts/:filename" element={<DraftPage />} />
           <Route path=":slug" element={<MarkdownPage />} />
         </Route>
       </Routes>
