@@ -21,11 +21,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # Build in its own job so the github-pages artifact is fully visible
+  # before deploy-pages looks it up (avoids a same-job race that can fail
+  # with "No artifacts named github-pages were found").
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -49,6 +48,14 @@ jobs:
         with:
           # Upload dist folder
           path: './dist'
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
